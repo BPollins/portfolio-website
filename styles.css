@@ -1,0 +1,262 @@
+body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 0.025em;
+    margin: 0;
+    padding: 0;
+    padding-top: 50px;
+    background-color: white;
+    color: black;
+}
+.nav-bar {
+    display: flex;
+    justify-content: center; /* Center the links horizontally */
+    background-color: #003366; /* Same as header background */
+    padding: 10px 0; /* Padding for spacing */
+    position: fixed; /* Fixed position to stay at the top */
+    width: 100%; /* Full width of the screen */
+    top: 0; /* Position at the top of the screen */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    font-weight: 500;
+}
+
+.nav-bar a {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.2em; /* Font size for links */
+    margin: 0 15px; /* Margin between links */
+    padding: 5px 10px; /* Padding for links */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+
+.nav-bar a:hover {
+    background-color: #005bb5; /* Darker background on hover */
+}
+
+header {
+    background-color: #003366;
+    color: white;
+    padding: 20px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header-left {
+    text-align: left;
+}
+
+.header-right {
+    text-align: right;
+    font-size: 0.85em;
+    margin: 0;
+}
+
+.header-center {
+    text-align: center;
+    padding: 37.5px 0;
+}
+
+.header-right a, .header-right p {
+    text-align: right;
+}
+
+header p, header a {
+    color: white;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+header p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+
+.header-content p {
+    margin: 5px 0;
+}
+
+.header-content a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+h1 {
+    font-family: "Poppins", sans-serif; 
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 2.5em;
+    letter-spacing: 0.2em;
+    margin: 0;
+}
+
+h2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    font-size: 1.1em;
+    letter-spacing: 0.2em;
+    margin: 0;
+    margin-top: 5px;
+}
+
+a {
+    color: #72a6da;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    text-align: justify;
+}
+
+.cv-container {
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    font-size: 14px;
+}
+
+section {
+    margin: 40px 0;
+}
+
+h3 {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-style: normal;    
+    font-size: 1.4em;
+    text-align: center;
+    letter-spacing: 0.5em;
+    margin-bottom: 20px;
+    color: #72a6da;
+    border-bottom: 2px solid #72a6da;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.skills-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.skills-section .column {
+    flex: 1;
+    padding: 0 20px;
+}
+
+
+.skills-section ul {
+    columns: 2; /* This keeps the technologies in two columns */
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    text-align: center; /* Center-align the text */
+}
+
+.skills-section ul.single-column {
+    columns: 1; /* This makes the skills in a single column */
+}
+
+.skills-section li {
+    margin: 5px 0;
+    position: relative;
+    padding-left: 0; /* Remove left padding */
+    text-align: center;
+}
+
+.skills-section li::before {
+    content: "";
+}
+
+.experience h4 {
+    color: #908f8f; /* Change job titles to grey */
+    margin-top: 10px;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.date {
+    float: right;
+}
+
+/* Clear float after each section */
+.bold::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.bold {
+    font-style: italic;
+    margin: 5px 0;
+    color: #000; /* Change project names to black */
+    font-weight: bold; /* Make project names bold */
+}
+
+ul {
+    margin: 10px 0;
+    padding: 0 20px;
+}
+
+ul li {
+    margin: 5px 0;
+    list-style: none;
+    position: relative;
+    padding-left: 15px;
+    font-size: 14px; /* Same font size as list items */
+    color: black; /* Same color as list items */
+    text-align: justify;
+}
+
+ul li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: #6699cc;
+}
+
+
+.summary, .skills, .experience, .education, .projects, .interests {
+    margin-bottom: 40px;
+}
+.project {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-description {
+    flex: 1;
+    margin-right: 20px; /* Space between the description and the image */
+}
+
+.project-image img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd; /* Optional: Add a border around the image */
+    padding: 5px; /* Optional: Add some padding inside the border */
+}
