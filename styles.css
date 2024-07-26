@@ -22,6 +22,7 @@ body {
     top: 0; /* Position at the top of the screen */
     z-index: 1000; /* Ensure it stays on top of other elements */
     font-weight: 500;
+    opacity: 97%;
 }
 
 .nav-bar a {
@@ -51,9 +52,9 @@ nav a:hover {
 header {
     background-color: #003366;
     color: white;
-    padding: 40px 0 20px;
+    padding: 50px 0 0;
     width: 100%;
-    min-height: 220px;
+    min-height: 240px;
     box-sizing: border-box;
 }
 
@@ -147,9 +148,9 @@ p {
 
 .cv-container {
     width: 80%;
-    margin: 20px auto;
+    margin: 0px auto;
     background: #fff;
-    padding: 20px;
+    padding: 10px;
     font-size: 14px;
 }
 
@@ -171,11 +172,48 @@ h3 {
     text-transform: uppercase;
 }
 
+.content-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 40px 10%;
+}
+
+.welcome-text {
+    flex: 3;
+    padding-right: 20px;
+    text-align: left;
+}
+
+.footnote {
+    font-style: italic;
+}
+
+.vertical-line {
+    flex: 0 0 2px;
+    height: 150px;
+    background-color: #72a6da;
+    margin: 0 20px;
+}
+
+.headshot {
+    flex: 1;
+    text-align: left;
+}
+
+.headshot img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* Crop the image into a circle */
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
 .skills-section {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
 
 .skills-section .column {
     flex: 1;
@@ -269,3 +307,37 @@ ul li::before {
     padding: 5px; 
 } 
 
+.project-description {
+    margin-bottom: 20px;
+}
+
+/* Styling for the "Hosted on" section */
+.hosted-on {
+    display: flex; /* Use flexbox for alignment */
+    align-items: top; /* Center items vertically */
+    justify-content:center; /* Center items horizontally */
+    color: rgba(0, 0, 0, 0.3); /* Black color with 30% transparency */
+    margin-top: 40px; /* Add some spacing at the top */
+    text-align: center; /* Center align text and image */
+}
+
+.hosted-on p {
+    margin: 0; /* Remove default margin */
+    margin-right: 0; /* Add spacing between text and image */
+    margin-top: 25px;
+}
+
+.hosted-on img {
+    width: 100px; /* Adjust size as needed */
+    opacity: 0.3; /* 30% transparency */
+}
+
+.index-header {
+    background: url('data-background.png') no-repeat center center/cover; /* Background image */
+    height: 95vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
