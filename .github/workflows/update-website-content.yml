@@ -21,4 +21,4 @@ jobs:
           aws-region: eu-west-2
 
       - name: Sync website-content folder to S3
-        run: aws s3 sync website-content/ s3://your-existing-s3-bucket-name --delete
+        run: aws s3 sync website-content/ s3://benpollins.com --delete
