@@ -15,8 +15,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
-    /* background-color: #003366; */
+    background-color: #003366;
     padding: 10px 0;
     position: fixed;
     width: 100%;
