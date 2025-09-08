@@ -210,44 +210,30 @@ h3 {
     border-radius: 50%;
 }
 
-.skills-section {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-
-.skills-section .column {
-    flex: 1;
-    padding: 0 20px;
-}
-
-
-.skills-section ul {
-    columns: 2;
-    list-style-type: none;
+.inline-list {
+    list-style: none;   
     padding: 0;
     margin: 0;
     text-align: center;
 }
 
-.skills-section ul.single-column {
-    columns: 1;
+.inline-list li {
+    display: inline;    
 }
 
-.skills-section li {
-    margin: 5px 0;
-    position: relative;
-    padding-left: 0;
-    text-align: center;
+.inline-list li::after {
+    content: " · ";
+    margin-left: 0.67em;
+    color: grey;
+    font-size: 1.5em;
 }
 
-.skills-section li::before {
-    content: "";
+.inline-list li:last-child::after {
+    content: "";        
 }
 
 .experience h4 {
-    color: #908f8f;
+    color: black;
     margin-top: 10px;
     font-size: 1.1em;
     margin-bottom: 5px;
@@ -285,7 +271,7 @@ ul li {
     text-align: justify;
 }
 
-ul li::before {
+.vertical-list li::before {
     content: "–";
     position: absolute;
     left: 0;
