@@ -1,0 +1,61 @@
+/* Modern Dark Portfolio Styles */
+.App {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Selection color */
+::selection {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Print Styles for CV */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  nav, footer, .no-print {
+    display: none !important;
+  }
+  
+  .bg-gray-950, .bg-gray-900, .bg-gray-800 {
+    background: white !important;
+  }
+  
+  .text-white, .text-gray-300, .text-gray-400 {
+    color: black !important;
+  }
+  
+  .border-gray-800, .border-gray-600 {
+    border-color: #e5e7eb !important;
+  }
+  
+  @page {
+    margin: 0.5in;
+  }
+}
