@@ -3,7 +3,7 @@
 export const personalInfo = {
   name: "BEN POLLINS",
   title: "CLOUD CONSULTANT",
-  location: "London, N6 4HP",
+  location: "London, N6",
   email: "benpollins@hotmail.com",
   website: "benpollins.com",
   linkedin: "linkedin.com/in/ben-pollins",
