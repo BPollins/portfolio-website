@@ -7,6 +7,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import CV from "./pages/CV";
 import Portfolio from "./pages/Portfolio";
+import CourtFinder from "./pages/CourtFinder";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/cv" element={<CV />} />
               <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/courtfinder" element={<CourtFinder />} />
             </Routes>
           </main>
           <Footer />
