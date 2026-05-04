@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import {
   Search,
   MapPin,
@@ -20,13 +20,18 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { Select } from "@/components/ui/select";
 
-const API_URL = "https://s9arazkovi.execute-api.eu-west-2.amazonaws.com/default/aggregator";
+const API_URL = import.meta.env.VITE_COURTFINDER_API_URL || "";
 
 const BOOKING_TYPES = [
   { value: "40min", label: "40 minutes" },
   { value: "60min", label: "60 minutes" },
 ];
+const TIME_OPTIONS = Array.from({ length: 24 }, (_, hour) => {
+  const value = `${String(hour).padStart(2, "0")}:00`;
+  return { value, label: value };
+});
 
 const todayIsoDate = () => new Date().toISOString().slice(0, 10);
 
@@ -56,6 +61,7 @@ const formatTime = (raw) => {
 };
 
 const CourtFinder = () => {
+  const dateInputRef = useRef(null);
   const [form, setForm] = useState({
     postcode: "",
     date: todayIsoDate(),
@@ -70,10 +76,26 @@ const CourtFinder = () => {
     setForm((current) => ({ ...current, [field]: event.target.value }));
   };
 
+  const openDatePicker = () => {
+    if (!dateInputRef.current) return;
+    if (typeof dateInputRef.current.showPicker === "function") {
+      dateInputRef.current.showPicker();
+    } else {
+      dateInputRef.current.focus();
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError(null);
     setResults(null);
+
+    if (!API_URL) {
+      setError(
+        "API URL is not configured. Set VITE_COURTFINDER_API_URL in your .env."
+      );
+      return;
+    }
 
     setSubmitting(true);
     try {
@@ -171,14 +193,27 @@ const CourtFinder = () => {
                   <Calendar className="w-3 h-3 text-cyan-400" />
                   Date
                 </Label>
-                <Input
-                  id="date"
-                  type="date"
-                  value={form.date}
-                  onChange={handleChange("date")}
-                  required
-                  className="bg-gray-950 border-gray-700 text-white focus-visible:ring-cyan-400"
-                />
+                <div className="relative">
+                  <Input
+                    id="date"
+                    ref={dateInputRef}
+                    type="date"
+                    value={form.date}
+                    onChange={handleChange("date")}
+                    onFocus={openDatePicker}
+                    onClick={openDatePicker}
+                    required
+                    className="bg-gray-950 border-gray-700 text-white focus-visible:ring-cyan-400 pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={openDatePicker}
+                    aria-label="Open date picker"
+                    className="absolute inset-y-0 right-2 flex items-center text-gray-400 hover:text-white"
+                  >
+                    <Calendar className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
 
               <div className="space-y-2">
@@ -189,14 +224,22 @@ const CourtFinder = () => {
                   <Clock className="w-3 h-3 text-cyan-400" />
                   Time
                 </Label>
-                <Input
+                <Select
                   id="time"
-                  type="time"
                   value={form.time}
                   onChange={handleChange("time")}
-                  required
                   className="bg-gray-950 border-gray-700 text-white focus-visible:ring-cyan-400"
-                />
+                >
+                  {TIME_OPTIONS.map((option) => (
+                    <option
+                      key={option.value}
+                      value={option.value}
+                      className="bg-gray-900 text-white"
+                    >
+                      {option.label}
+                    </option>
+                  ))}
+                </Select>
               </div>
 
               <div className="space-y-2">
@@ -207,11 +250,11 @@ const CourtFinder = () => {
                   <Trophy className="w-3 h-3 text-cyan-400" />
                   Booking length
                 </Label>
-                <select
+                <Select
                   id="bookingType"
                   value={form.bookingType}
                   onChange={handleChange("bookingType")}
-                  className="flex h-9 w-full appearance-none rounded-md border border-gray-700 bg-gray-950 px-3 py-1 pr-9 text-base text-white shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%239ca3af%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M5.23%207.21a.75.75%200%200%201%201.06.02L10%2011.06l3.71-3.83a.75.75%200%201%201%201.08%201.04l-4.25%204.39a.75.75%200%200%201-1.08%200L5.21%208.27a.75.75%200%200%201%20.02-1.06z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1rem_1rem] bg-[position:right_0.5rem_center] bg-no-repeat"
+                  className="bg-gray-950 border-gray-700 text-white focus-visible:ring-cyan-400"
                 >
                   {BOOKING_TYPES.map((option) => (
                     <option
@@ -222,7 +265,7 @@ const CourtFinder = () => {
                       {option.label}
                     </option>
                   ))}
-                </select>
+                </Select>
               </div>
 
               <div className="md:col-span-2 lg:col-span-4 flex justify-end pt-2">
