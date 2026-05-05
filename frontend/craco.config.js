@@ -1,5 +1,6 @@
 // Load configuration from environment or config file
 const path = require('path');
+const webpack = require('webpack');
 
 // Environment variable overrides
 const config = {
@@ -39,7 +40,15 @@ module.exports = {
           ],
         };
       }
-      
+
+      webpackConfig.plugins.push(
+        new webpack.DefinePlugin({
+          "process.env.COURTFINDER_API_URL": JSON.stringify(
+            process.env.COURTFINDER_API_URL || ""
+          ),
+        })
+      );
+
       return webpackConfig;
     },
   },
