@@ -24,7 +24,7 @@ import { Badge } from "@/components/ui/badge";
 const NATIVE_SELECT_CLASS =
   "flex h-9 w-full appearance-none rounded-md border bg-gray-950 border-gray-700 text-white px-3 py-1 text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm pr-9 bg-no-repeat bg-[length:1rem_1rem] bg-[position:right_0.5rem_center] bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%239ca3af%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M5.23%207.21a.75.75%200%200%201%201.06.02L10%2011.06l3.71-3.83a.75.75%200%201%201%201.08%201.04l-4.25%204.39a.75.75%200%200%201-1.08%200L5.21%208.27a.75.75%200%200%201%20.02-1.06z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]";
 
-const API_URL = process.env.COURTFINDER_API_URL || "";
+const API_URL = import.meta.env.COURTFINDER_API_URL || "";
 
 const BOOKING_TYPES = [
   { value: "40min", label: "40 minutes" },
@@ -185,7 +185,7 @@ const CourtFinder = () => {
                 />
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 min-w-0">
                 <Label
                   htmlFor="date"
                   className="text-gray-300 font-mono text-xs tracking-wider uppercase flex items-center gap-2"
@@ -193,7 +193,7 @@ const CourtFinder = () => {
                   <Calendar className="w-3 h-3 text-cyan-400" />
                   Date
                 </Label>
-                <div className="relative">
+                <div className="relative min-w-0">
                   <Input
                     id="date"
                     ref={dateInputRef}
@@ -203,7 +203,7 @@ const CourtFinder = () => {
                     onFocus={openDatePicker}
                     onClick={openDatePicker}
                     required
-                    className="bg-gray-950 border-gray-700 text-white focus-visible:ring-cyan-400 pr-10"
+                    className="bg-gray-950 border-gray-700 text-white focus-visible:ring-cyan-400 pr-10 appearance-none min-w-0 [&::-webkit-date-and-time-value]:text-left [&::-webkit-date-and-time-value]:min-h-0 [&::-webkit-date-and-time-value]:leading-none [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                   />
                   <button
                     type="button"
