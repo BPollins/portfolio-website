@@ -6,6 +6,8 @@
 .pnp.js
 
 # misc
+.env
+/build
 .env.local
 .env.development.local
 .env.test.local
