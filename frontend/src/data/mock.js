@@ -3,7 +3,7 @@
 export const personalInfo = {
   name: "BEN POLLINS",
   title: "CLOUD CONSULTANT",
-  location: "London, N6",
+  location: "London",
   email: "benpollins@hotmail.com",
   website: "benpollins.com",
   linkedin: "linkedin.com/in/ben-pollins",
@@ -122,6 +122,30 @@ export const education = [
 ];
 
 export const projects = [
+  {
+    id: 4,
+    title: "CourtFinder",
+    description:
+      "Serverless web app that searches for available badminton courts by postcode, date, and session length—aggregating results from leisure-centre booking systems in one place.",
+    fullDescription: [
+      "Finding a badminton court often means checking several leisure providers and websites, each with its own search flow. CourtFinder is a small tool I built to make that quicker: you enter a postcode, pick a date, time window, and booking length, and it returns a list of bookable slots with prices and direct links to complete the booking.",
+      "Under the hood it is a React front end on S3 behind CloudFront. When you search, the browser calls an aggregator AWS Lambda that fans out (via boto3) to one Lambda per booking provider, each responsible for talking to that provider’s system. Responses are merged into a single JSON payload so the UI can show a uniform list of courts, even as more providers are added later.",
+      "The stack is designed to sit comfortably inside the AWS free tier for typical portfolio traffic: static hosting, Lambda, and optional API Gateway. The first integration targets Better’s booking platform; the architecture is ready for additional provider Lambdas without changing the contract the front end uses."
+    ],
+    technologies: [
+      "React",
+      "AWS Lambda",
+      "API Gateway",
+      "CloudFront",
+      "S3",
+      "Python",
+      "Vite",
+      "Tailwind CSS"
+    ],
+    category: "Cloud",
+    image: "/images/badminton-court.jpg",
+    github: "https://github.com/BPollins/CourtFinder"
+  },
   {
     id: 1,
     title: "Automated Schematic Reader",
